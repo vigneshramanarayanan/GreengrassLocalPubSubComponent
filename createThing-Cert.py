@@ -66,4 +66,4 @@ def createCertificate(vehicle):
 thingClient = boto3.client('iot', region_name='us-east-1')  # Replace 'us-east-1' with your desired region
 
 for i in range(1,501):
-createThing("vehicle"+str(i))
+	createThing("vehicle"+str(i))
