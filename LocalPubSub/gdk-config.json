@@ -1,0 +1,19 @@
+{
+  "component": {
+    "com.vignesh.process_emission": {
+      "author": "Vignesh",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip",
+        "options": {
+          "zip_name": ""
+        }
+      },
+      "publish": {
+        "bucket": "localpubsub",
+        "region": "us-east-1"
+      }
+    }
+  },
+  "gdk_version": "1.3.0"
+}

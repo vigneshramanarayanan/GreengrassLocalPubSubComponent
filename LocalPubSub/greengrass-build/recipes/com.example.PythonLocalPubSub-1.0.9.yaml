@@ -1,0 +1,29 @@
+RecipeFormatVersion: '2020-01-25'
+ComponentName: com.example.PythonLocalPubSub
+ComponentVersion: 1.0.9
+ComponentDescription: This example component shows how to pubslish and subscribe to
+  topics from a component using IPC operations.
+ComponentPublisher: Vignesh
+ComponentConfiguration:
+  DefaultConfiguration:
+    Message: Hello from local pubsub topic
+    Topic: vehicle1/emission/data
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        com.example.PythonLocalPubSub:pubsub:1:
+          policyDescription: Allows access to publish and subscribe to topic vehicle1/emission/data.
+          operations:
+          - aws.greengrass#SubscribeToTopic
+          - aws.greengrass#PublishToTopic
+          resources:
+          - vehicle1/emission/data
+          - iot/vehicle1
+Manifests:
+- Platform:
+    os: all
+  Artifacts:
+  - Uri: s3://localpubsub-us-east-1-321552776596/com.example.PythonLocalPubSub/1.0.9/com.example.PythonLocalPubSub.zip
+    Unarchive: ZIP
+  Lifecycle:
+    run: python3 -u {artifacts:decompressedPath}/com.example.PythonLocalPubSub/main.py
+      {configuration:/Topic} {configuration:/Message}
